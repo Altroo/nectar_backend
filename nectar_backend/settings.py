@@ -41,6 +41,7 @@ SITE_EMAIL_DISPLAY = config("SITE_EMAIL_DISPLAY", default="info@nectar.ma / cont
 SITE_DEFAULT_LANG = config("SITE_DEFAULT_LANG", default="fr")
 
 INSTALLED_APPS = [
+    "account.apps.AccountConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -124,6 +125,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),

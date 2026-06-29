@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
@@ -44,3 +45,23 @@ class PublicSiteApiTests(TestCase):
         self.assertEqual(newsletter_response.status_code, 201)
         self.assertEqual(ContactRequest.objects.count(), 1)
         self.assertEqual(NewsletterSignup.objects.count(), 1)
+
+
+class AdminEmailLoginTests(TestCase):
+    def test_admin_login_uses_email(self):
+        get_user_model().objects.create_superuser(
+            email="admin@nectar.test",
+            password="secure-admin-password",
+        )
+
+        response = self.client.post(
+            reverse("admin:login"),
+            {
+                "username": "admin@nectar.test",
+                "password": "secure-admin-password",
+                "next": reverse("admin:index"),
+            },
+            follow=True,
+        )
+
+        self.assertTrue(response.context["user"].is_authenticated)
