@@ -8,8 +8,8 @@ services:
     command: gunicorn nectar_backend.wsgi:application --bind 0.0.0.0:8008
     env_file:
       - .env
-    ports:
-      - "8008:8008"
+    expose:
+      - "8008"
     volumes:
       - ./media:/app/media
       - ./staticfiles:/app/staticfiles
@@ -30,8 +30,6 @@ services:
     container_name: nectar_db
     restart: always
     command: postgres -c max_connections=100 -c shared_buffers=128MB
-    ports:
-      - "5439:5432"
     expose:
       - "5432"
     env_file:
