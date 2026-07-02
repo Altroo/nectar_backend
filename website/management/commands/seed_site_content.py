@@ -210,6 +210,54 @@ HILTON_N11_12TH_PHOTOS = [
     ),
 ]
 
+MANDELSON_N47_PHOTOS = [
+    (
+        "Salon",
+        "/assets/mandelson-n47/mandelson-n47-salon-large.jpg",
+        "Salon de l'appartement Mandelson N°47",
+    ),
+    (
+        "Salle à manger",
+        "/assets/mandelson-n47/mandelson-n47-salle-a-manger-large.jpg",
+        "Salle à manger de l'appartement Mandelson N°47",
+    ),
+    (
+        "Chambre 1",
+        "/assets/mandelson-n47/mandelson-n47-chambre-1-large.jpg",
+        "Chambre 1 de l'appartement Mandelson N°47",
+    ),
+    (
+        "Chambre 2",
+        "/assets/mandelson-n47/mandelson-n47-chambre-2-large.jpg",
+        "Chambre 2 de l'appartement Mandelson N°47",
+    ),
+    (
+        "Balcon chambre 2",
+        "/assets/mandelson-n47/mandelson-n47-balcon-chambre-2-large.jpg",
+        "Balcon de la chambre 2 de l'appartement Mandelson N°47",
+    ),
+    (
+        "Cuisine",
+        "/assets/mandelson-n47/mandelson-n47-cuisine-large.jpg",
+        "Cuisine de l'appartement Mandelson N°47",
+    ),
+    (
+        "Balcon cuisine",
+        "/assets/mandelson-n47/mandelson-n47-balcon-cuisine-large.jpg",
+        "Balcon de la cuisine de l'appartement Mandelson N°47",
+    ),
+    (
+        "Toilette 1",
+        "/assets/mandelson-n47/mandelson-n47-toilette-1-large.jpg",
+        "Toilette 1 de l'appartement Mandelson N°47",
+    ),
+    (
+        "Toilette 2",
+        "/assets/mandelson-n47/mandelson-n47-toilette-2-large.jpg",
+        "Toilette 2 de l'appartement Mandelson N°47",
+    ),
+]
+
 PROPERTY_PHOTO_ALBUMS = {
     "Appartement City Center Ra1 N°B": CITY_CENTER_PHOTOS,
     "Appartement Hilton N°05": HILTON_N05_PHOTOS,
@@ -218,6 +266,7 @@ PROPERTY_PHOTO_ALBUMS = {
     "Appartement Hilton N°11 - Etage 12": HILTON_N11_12TH_PHOTOS,
     "HILTON · N°11": HILTON_N11_PHOTOS,
     "HILTON · N°13": HILTON_N13_PHOTOS,
+    "MANDELSON BLOC A · N°47": MANDELSON_N47_PHOTOS,
 }
 
 
