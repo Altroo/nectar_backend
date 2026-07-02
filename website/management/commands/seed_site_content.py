@@ -4,10 +4,24 @@ from website.models import (
     EventIdea,
     GuidePlace,
     Property,
+    PropertyPhoto,
     PurplePearlPlan,
     SiteContact,
     Testimonial,
 )
+
+
+CITY_CENTER_PHOTOS = [
+    ("Salon", "/assets/city-center/city-center-salon.png", "Salon de l'appartement City Center"),
+    ("Séjour", "/assets/city-center/city-center-sejour.png", "Séjour de l'appartement City Center"),
+    ("Chambre 1", "/assets/city-center/city-center-chambre-1.png", "Chambre 1 de l'appartement City Center"),
+    ("Chambre 2", "/assets/city-center/city-center-chambre-2.png", "Chambre 2 de l'appartement City Center"),
+    ("Chambre 3", "/assets/city-center/city-center-chambre-3.png", "Chambre 3 de l'appartement City Center"),
+    ("Chambre 4", "/assets/city-center/city-center-chambre-4.png", "Chambre 4 de l'appartement City Center"),
+    ("Cuisine", "/assets/city-center/city-center-cuisine.png", "Cuisine de l'appartement City Center"),
+    ("Toilette 1", "/assets/city-center/city-center-toilette-1.png", "Toilette de l'appartement City Center"),
+    ("Toilette 2", "/assets/city-center/city-center-toilette-2.png", "Deuxième toilette de l'appartement City Center"),
+]
 
 
 class Command(BaseCommand):
@@ -80,7 +94,7 @@ class Command(BaseCommand):
         for index, item in enumerate(rent_apartments, start=101):
             title, residence, floor, unit_number, bedrooms, price, numeric_price = item
             address = "Place du Maghreb Arabe, Tanger" if residence == "Hilton" else "City Center Ra1, Tanger"
-            self.upsert(
+            property_obj = self.upsert(
                 Property,
                 {"title": title, "transaction": Property.RENT, "property_type": Property.APARTMENT},
                 {
@@ -100,6 +114,10 @@ class Command(BaseCommand):
                     "surface_total": numeric_price,
                 },
             )
+            if "City Center" in title and not property_obj.image_path:
+                property_obj.image_path = CITY_CENTER_PHOTOS[0][1]
+                property_obj.save(update_fields=["image_path"])
+        self.seed_city_center_photos()
 
         commercial_units = [
             ("Local A1 · ERASMUS TOWER", "A", 235, "141 m²", "94 m²", "188 m²"),
@@ -153,6 +171,25 @@ class Command(BaseCommand):
                 "is_active": True,
             },
         )
+
+    def seed_city_center_photos(self):
+        city_center = Property.objects.filter(title="Appartement City Center Ra1 N°B").first()
+        if not city_center:
+            return
+        if not city_center.image_path:
+            city_center.image_path = CITY_CENTER_PHOTOS[0][1]
+            city_center.save(update_fields=["image_path"])
+        for index, (title, image_path, alt_text) in enumerate(CITY_CENTER_PHOTOS, start=1):
+            self.upsert(
+                PropertyPhoto,
+                {"property": city_center, "title": title},
+                {
+                    "image_path": image_path,
+                    "alt_text": alt_text,
+                    "sort_order": index,
+                    "is_active": True,
+                },
+            )
 
     def seed_guide(self):
         places = [

@@ -52,7 +52,9 @@ class PublicSiteView(PublicMixin, APIView):
                 "defaultLang": getattr(settings, "SITE_DEFAULT_LANG", "fr"),
                 "contact": contact_data,
                 "properties": PropertySerializer(
-                    Property.objects.filter(is_active=True).order_by("sort_order", "title"),
+                    Property.objects.filter(is_active=True)
+                    .prefetch_related("photos")
+                    .order_by("sort_order", "title"),
                     many=True,
                     context=context,
                 ).data,
@@ -84,7 +86,7 @@ class PropertyListView(PublicMixin, generics.ListAPIView):
     pagination_class = None
 
     def get_queryset(self):
-        queryset = Property.objects.filter(is_active=True).order_by("sort_order", "title")
+        queryset = Property.objects.filter(is_active=True).prefetch_related("photos").order_by("sort_order", "title")
         transaction = self.request.query_params.get("transaction")
         property_type = self.request.query_params.get("property_type")
         if transaction:

@@ -6,6 +6,7 @@ from .models import (
     GuidePlace,
     NewsletterSignup,
     Property,
+    PropertyPhoto,
     PurplePearlPlan,
     PurplePearlVisitRequest,
     SiteContact,
@@ -35,8 +36,20 @@ class SiteContactSerializer(serializers.ModelSerializer):
         )
 
 
+class PropertyPhotoSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = PropertyPhoto
+        fields = ("id", "title", "alt_text", "image", "sort_order")
+
+    def get_image(self, obj):
+        return image_url(self.context.get("request"), obj)
+
+
 class PropertySerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
+    photos = serializers.SerializerMethodField()
     surface_total = serializers.SerializerMethodField()
 
     class Meta:
@@ -62,11 +75,19 @@ class PropertySerializer(serializers.ModelSerializer):
             "price_note",
             "cta_label",
             "image",
+            "photos",
             "sort_order",
         )
 
     def get_image(self, obj):
         return image_url(self.context.get("request"), obj)
+
+    def get_photos(self, obj):
+        return PropertyPhotoSerializer(
+            obj.photos.filter(is_active=True).order_by("sort_order", "id"),
+            many=True,
+            context=self.context,
+        ).data
 
     def get_surface_total(self, obj):
         if obj.surface_total is None:

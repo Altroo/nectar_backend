@@ -6,6 +6,7 @@ from .models import (
     GuidePlace,
     NewsletterSignup,
     Property,
+    PropertyPhoto,
     PurplePearlPlan,
     PurplePearlVisitRequest,
     SiteContact,
@@ -44,6 +45,22 @@ class SiteContactAdmin(VisibleOrderedAdmin):
     )
 
 
+class PropertyPhotoInline(admin.TabularInline):
+    model = PropertyPhoto
+    extra = 0
+    fields = (
+        "title",
+        "image",
+        "image_path",
+        "alt_text",
+        "sort_order",
+        "is_active",
+    )
+    ordering = ("sort_order", "id")
+    verbose_name = "photo de l'album"
+    verbose_name_plural = "album photo"
+
+
 @admin.register(Property)
 class PropertyAdmin(VisibleOrderedAdmin):
     list_display = (
@@ -57,6 +74,7 @@ class PropertyAdmin(VisibleOrderedAdmin):
     )
     list_filter = ("transaction", "property_type", "residence", "district", "is_active")
     search_fields = ("title", "tag", "residence", "district", "address", "description", "unit_number")
+    inlines = (PropertyPhotoInline,)
     fieldsets = (
         (
             "Ou apparait ce bien",
@@ -99,6 +117,31 @@ class PropertyAdmin(VisibleOrderedAdmin):
                     "price",
                     "price_note",
                 )
+            },
+        ),
+    )
+
+
+@admin.register(PropertyPhoto)
+class PropertyPhotoAdmin(VisibleOrderedAdmin):
+    list_display = ("title", "property", "sort_order", "is_active")
+    list_filter = ("is_active", "property__residence")
+    search_fields = ("title", "property__title", "property__residence")
+    autocomplete_fields = ("property",)
+    fieldsets = (
+        (
+            "Photo affichee dans l'album du bien",
+            {
+                "description": "Ajoutez les photos dans l'ordre souhaite: salon, chambres, cuisine, toilette.",
+                "fields": (
+                    "property",
+                    "title",
+                    "image",
+                    "image_path",
+                    "alt_text",
+                    "sort_order",
+                    "is_active",
+                ),
             },
         ),
     )

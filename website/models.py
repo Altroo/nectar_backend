@@ -110,6 +110,30 @@ class Property(VisibleOrderedModel, ImageSourceModel):
         return self.title
 
 
+class PropertyPhoto(VisibleOrderedModel, ImageSourceModel):
+    property = models.ForeignKey(
+        Property,
+        on_delete=models.CASCADE,
+        related_name="photos",
+        verbose_name="bien concerne",
+    )
+    title = models.CharField("nom affiche dans l'album", max_length=160)
+    alt_text = models.CharField(
+        "description de la photo",
+        max_length=220,
+        blank=True,
+        help_text="Texte court utile si l'image ne se charge pas.",
+    )
+
+    class Meta:
+        ordering = ("property", "sort_order", "id")
+        verbose_name = "photo du bien"
+        verbose_name_plural = "photos des biens"
+
+    def __str__(self):
+        return f"{self.property} - {self.title}"
+
+
 class GuidePlace(VisibleOrderedModel, ImageSourceModel):
     MONUMENTS = "monuments"
     MUSEUMS = "musees"
