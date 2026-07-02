@@ -13,47 +13,47 @@ from website.models import (
 CITY_CENTER_PHOTOS = [
     (
         "Salon",
-        "/assets/city-center/city-center-salon.png",
+        "/assets/city-center/city-center-salon-large.jpg",
         "Salon de l'appartement City Center",
     ),
     (
         "Séjour",
-        "/assets/city-center/city-center-sejour.png",
+        "/assets/city-center/city-center-sejour-large.jpg",
         "Séjour de l'appartement City Center",
     ),
     (
         "Chambre 1",
-        "/assets/city-center/city-center-chambre-1.png",
+        "/assets/city-center/city-center-chambre-1-large.jpg",
         "Chambre 1 de l'appartement City Center",
     ),
     (
         "Chambre 2",
-        "/assets/city-center/city-center-chambre-2.png",
+        "/assets/city-center/city-center-chambre-2-large.jpg",
         "Chambre 2 de l'appartement City Center",
     ),
     (
         "Chambre 3",
-        "/assets/city-center/city-center-chambre-3.png",
+        "/assets/city-center/city-center-chambre-3-large.jpg",
         "Chambre 3 de l'appartement City Center",
     ),
     (
         "Chambre 4",
-        "/assets/city-center/city-center-chambre-4.png",
+        "/assets/city-center/city-center-chambre-4-large.jpg",
         "Chambre 4 de l'appartement City Center",
     ),
     (
         "Cuisine",
-        "/assets/city-center/city-center-cuisine.png",
+        "/assets/city-center/city-center-cuisine-large.jpg",
         "Cuisine de l'appartement City Center",
     ),
     (
         "Toilette 1",
-        "/assets/city-center/city-center-toilette-1.png",
+        "/assets/city-center/city-center-toilette-1-large.jpg",
         "Toilette de l'appartement City Center",
     ),
     (
         "Toilette 2",
-        "/assets/city-center/city-center-toilette-2.png",
+        "/assets/city-center/city-center-toilette-2-large.jpg",
         "Deuxième toilette de l'appartement City Center",
     ),
 ]
@@ -61,37 +61,37 @@ CITY_CENTER_PHOTOS = [
 HILTON_N05_PHOTOS = [
     (
         "Salon",
-        "/assets/hilton-n05/hilton-n05-salon.png",
+        "/assets/hilton-n05/hilton-n05-salon-large.jpg",
         "Salon de l'appartement Hilton N°05",
     ),
     (
         "Chambre 1",
-        "/assets/hilton-n05/hilton-n05-chambre-1.png",
+        "/assets/hilton-n05/hilton-n05-chambre-1-large.jpg",
         "Chambre 1 de l'appartement Hilton N°05",
     ),
     (
         "Chambre 2",
-        "/assets/hilton-n05/hilton-n05-chambre-2.png",
+        "/assets/hilton-n05/hilton-n05-chambre-2-large.jpg",
         "Chambre 2 de l'appartement Hilton N°05",
     ),
     (
         "Coffre-fort",
-        "/assets/hilton-n05/hilton-n05-coffre-fort.png",
+        "/assets/hilton-n05/hilton-n05-coffre-fort-large.jpg",
         "Coffre-fort de l'appartement Hilton N°05",
     ),
     (
         "Cuisine",
-        "/assets/hilton-n05/hilton-n05-cuisine.png",
+        "/assets/hilton-n05/hilton-n05-cuisine-large.jpg",
         "Cuisine de l'appartement Hilton N°05",
     ),
     (
         "Toilette 1",
-        "/assets/hilton-n05/hilton-n05-toilette-1.png",
+        "/assets/hilton-n05/hilton-n05-toilette-1-large.jpg",
         "Toilette 1 de l'appartement Hilton N°05",
     ),
     (
         "Toilette 2",
-        "/assets/hilton-n05/hilton-n05-toilette-2.png",
+        "/assets/hilton-n05/hilton-n05-toilette-2-large.jpg",
         "Toilette 2 de l'appartement Hilton N°05",
     ),
 ]
@@ -99,37 +99,37 @@ HILTON_N05_PHOTOS = [
 HILTON_N13_PHOTOS = [
     (
         "Salon",
-        "/assets/hilton-n13/hilton-n13-salon.png",
+        "/assets/hilton-n13/hilton-n13-salon-large.jpg",
         "Salon de l'appartement Hilton N°13",
     ),
     (
         "Chambre 1",
-        "/assets/hilton-n13/hilton-n13-chambre-1.png",
+        "/assets/hilton-n13/hilton-n13-chambre-1-large.jpg",
         "Chambre 1 de l'appartement Hilton N°13",
     ),
     (
         "Chambre 2",
-        "/assets/hilton-n13/hilton-n13-chambre-2.png",
+        "/assets/hilton-n13/hilton-n13-chambre-2-large.jpg",
         "Chambre 2 de l'appartement Hilton N°13",
     ),
     (
         "Coffre-fort",
-        "/assets/hilton-n13/hilton-n13-coffre-fort.png",
+        "/assets/hilton-n13/hilton-n13-coffre-fort-large.jpg",
         "Coffre-fort de l'appartement Hilton N°13",
     ),
     (
         "Cuisine",
-        "/assets/hilton-n13/hilton-n13-cuisine.png",
+        "/assets/hilton-n13/hilton-n13-cuisine-large.jpg",
         "Cuisine de l'appartement Hilton N°13",
     ),
     (
         "Toilette 1",
-        "/assets/hilton-n13/hilton-n13-toilette-1.png",
+        "/assets/hilton-n13/hilton-n13-toilette-1-large.jpg",
         "Toilette 1 de l'appartement Hilton N°13",
     ),
     (
         "Toilette 2",
-        "/assets/hilton-n13/hilton-n13-toilette-2.png",
+        "/assets/hilton-n13/hilton-n13-toilette-2-large.jpg",
         "Toilette 2 de l'appartement Hilton N°13",
     ),
 ]
@@ -137,42 +137,42 @@ HILTON_N13_PHOTOS = [
 HILTON_N11_PHOTOS = [
     (
         "Salon",
-        "/assets/hilton-n11/hilton-n11-salon.png",
+        "/assets/hilton-n11/hilton-n11-salon-large.jpg",
         "Salon de l'appartement Hilton N°11",
     ),
     (
         "Salon 2",
-        "/assets/hilton-n11/hilton-n11-salon-2.png",
+        "/assets/hilton-n11/hilton-n11-salon-2-large.jpg",
         "Deuxième vue du salon de l'appartement Hilton N°11",
     ),
     (
         "Meuble TV",
-        "/assets/hilton-n11/hilton-n11-meuble-tv.png",
+        "/assets/hilton-n11/hilton-n11-meuble-tv-large.jpg",
         "Meuble TV de l'appartement Hilton N°11",
     ),
     (
         "Chambre",
-        "/assets/hilton-n11/hilton-n11-chambre.png",
+        "/assets/hilton-n11/hilton-n11-chambre-large.jpg",
         "Chambre de l'appartement Hilton N°11",
     ),
     (
         "Placard",
-        "/assets/hilton-n11/hilton-n11-placard.png",
+        "/assets/hilton-n11/hilton-n11-placard-large.jpg",
         "Placard de l'appartement Hilton N°11",
     ),
     (
         "Coffre-fort",
-        "/assets/hilton-n11/hilton-n11-coffre-fort.png",
+        "/assets/hilton-n11/hilton-n11-coffre-fort-large.jpg",
         "Coffre-fort de l'appartement Hilton N°11",
     ),
     (
         "Cuisine",
-        "/assets/hilton-n11/hilton-n11-cuisine.png",
+        "/assets/hilton-n11/hilton-n11-cuisine-large.jpg",
         "Cuisine de l'appartement Hilton N°11",
     ),
     (
         "Toilette",
-        "/assets/hilton-n11/hilton-n11-toilette.png",
+        "/assets/hilton-n11/hilton-n11-toilette-large.jpg",
         "Toilette de l'appartement Hilton N°11",
     ),
 ]
@@ -180,32 +180,32 @@ HILTON_N11_PHOTOS = [
 HILTON_N11_12TH_PHOTOS = [
     (
         "Salon",
-        "/assets/hilton-n11-12th/hilton-n11-12th-salon.png",
+        "/assets/hilton-n11-12th/hilton-n11-12th-salon-large.jpg",
         "Salon de l'appartement Hilton N°11 étage 12",
     ),
     (
         "Salle à manger",
-        "/assets/hilton-n11-12th/hilton-n11-12th-salle-a-manger.png",
+        "/assets/hilton-n11-12th/hilton-n11-12th-salle-a-manger-large.jpg",
         "Salle à manger de l'appartement Hilton N°11 étage 12",
     ),
     (
         "Chambre",
-        "/assets/hilton-n11-12th/hilton-n11-12th-chambre.png",
+        "/assets/hilton-n11-12th/hilton-n11-12th-chambre-large.jpg",
         "Chambre de l'appartement Hilton N°11 étage 12",
     ),
     (
         "Placard",
-        "/assets/hilton-n11-12th/hilton-n11-12th-placard.png",
+        "/assets/hilton-n11-12th/hilton-n11-12th-placard-large.jpg",
         "Placard de l'appartement Hilton N°11 étage 12",
     ),
     (
         "Cuisine",
-        "/assets/hilton-n11-12th/hilton-n11-12th-cuisine.png",
+        "/assets/hilton-n11-12th/hilton-n11-12th-cuisine-large.jpg",
         "Cuisine de l'appartement Hilton N°11 étage 12",
     ),
     (
         "Toilette",
-        "/assets/hilton-n11-12th/hilton-n11-12th-toilette.png",
+        "/assets/hilton-n11-12th/hilton-n11-12th-toilette-large.jpg",
         "Toilette de l'appartement Hilton N°11 étage 12",
     ),
 ]
@@ -216,6 +216,8 @@ PROPERTY_PHOTO_ALBUMS = {
     "Appartement Hilton N°11": HILTON_N11_PHOTOS,
     "Appartement Hilton N°13": HILTON_N13_PHOTOS,
     "Appartement Hilton N°11 - Etage 12": HILTON_N11_12TH_PHOTOS,
+    "HILTON · N°11": HILTON_N11_PHOTOS,
+    "HILTON · N°13": HILTON_N13_PHOTOS,
 }
 
 
