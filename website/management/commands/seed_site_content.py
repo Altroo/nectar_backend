@@ -463,11 +463,11 @@ class Command(BaseCommand):
                 Property,
                 {
                     "title": title,
-                    "transaction": Property.SALE,
+                    "transaction": Property.RENT,
                     "property_type": Property.COMMERCIAL,
                 },
                 {
-                    "tag": "Malabata · Local commercial",
+                    "tag": "Malabata · Local commercial à louer",
                     "residence": "Erasmus Tower",
                     "district": "Malabata",
                     "address": "RTE MALABATA RESD ERASMUS",
@@ -479,29 +479,11 @@ class Command(BaseCommand):
                     "mezzanine": mezzanine,
                     "project_label": f"RDC {rdc}",
                     "price_note": unit_type,
-                    "cta_label": "Demander le prix →",
+                    "cta_label": "Demander la disponibilité →",
                     "sort_order": index,
                     "is_active": True,
                 },
             )
-
-        self.upsert(
-            Property,
-            {
-                "title": "Locaux à louer à Tanger",
-                "transaction": Property.RENT,
-                "property_type": Property.COMMERCIAL,
-            },
-            {
-                "tag": "Location · Local",
-                "district": "Malabata, Centre-ville",
-                "description": "Une page dédiée aux demandes de locaux à louer : boutiques, bureaux, showrooms ou espaces commerciaux.",
-                "project_label": "Commerce / bureau",
-                "cta_label": "Faire une demande →",
-                "sort_order": 301,
-                "is_active": True,
-            },
-        )
 
     def seed_property_photo_albums(self):
         for property_title, photos in PROPERTY_PHOTO_ALBUMS.items():
