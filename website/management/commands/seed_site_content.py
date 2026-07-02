@@ -23,6 +23,19 @@ CITY_CENTER_PHOTOS = [
     ("Toilette 2", "/assets/city-center/city-center-toilette-2.png", "Deuxième toilette de l'appartement City Center"),
 ]
 
+HILTON_N05_PHOTOS = [
+    ("Salon", "/assets/hilton-n05/hilton-n05-salon.png", "Salon de l'appartement Hilton N°05"),
+    ("Chambre 1", "/assets/hilton-n05/hilton-n05-chambre-1.png", "Chambre 1 de l'appartement Hilton N°05"),
+    ("Chambre 2", "/assets/hilton-n05/hilton-n05-chambre-2.png", "Chambre 2 de l'appartement Hilton N°05"),
+    ("Cuisine", "/assets/hilton-n05/hilton-n05-cuisine.png", "Cuisine de l'appartement Hilton N°05"),
+    ("Toilette", "/assets/hilton-n05/hilton-n05-toilette.png", "Toilette de l'appartement Hilton N°05"),
+]
+
+PROPERTY_PHOTO_ALBUMS = {
+    "Appartement City Center Ra1 N°B": CITY_CENTER_PHOTOS,
+    "Appartement Hilton N°05": HILTON_N05_PHOTOS,
+}
+
 
 class Command(BaseCommand):
     help = "Ajoute le contenu de depart editable dans l'administration Nectar."
@@ -114,10 +127,11 @@ class Command(BaseCommand):
                     "surface_total": numeric_price,
                 },
             )
-            if "City Center" in title and not property_obj.image_path:
-                property_obj.image_path = CITY_CENTER_PHOTOS[0][1]
+            album_photos = PROPERTY_PHOTO_ALBUMS.get(title)
+            if album_photos and not property_obj.image_path:
+                property_obj.image_path = album_photos[0][1]
                 property_obj.save(update_fields=["image_path"])
-        self.seed_city_center_photos()
+        self.seed_property_photo_albums()
 
         commercial_units = [
             ("Local A1 · ERASMUS TOWER", "A", 235, "141 m²", "94 m²", "188 m²"),
@@ -172,24 +186,25 @@ class Command(BaseCommand):
             },
         )
 
-    def seed_city_center_photos(self):
-        city_center = Property.objects.filter(title="Appartement City Center Ra1 N°B").first()
-        if not city_center:
-            return
-        if not city_center.image_path:
-            city_center.image_path = CITY_CENTER_PHOTOS[0][1]
-            city_center.save(update_fields=["image_path"])
-        for index, (title, image_path, alt_text) in enumerate(CITY_CENTER_PHOTOS, start=1):
-            self.upsert(
-                PropertyPhoto,
-                {"property": city_center, "title": title},
-                {
-                    "image_path": image_path,
-                    "alt_text": alt_text,
-                    "sort_order": index,
-                    "is_active": True,
-                },
-            )
+    def seed_property_photo_albums(self):
+        for property_title, photos in PROPERTY_PHOTO_ALBUMS.items():
+            property_obj = Property.objects.filter(title=property_title).first()
+            if not property_obj:
+                continue
+            if not property_obj.image_path:
+                property_obj.image_path = photos[0][1]
+                property_obj.save(update_fields=["image_path"])
+            for index, (title, image_path, alt_text) in enumerate(photos, start=1):
+                self.upsert(
+                    PropertyPhoto,
+                    {"property": property_obj, "title": title},
+                    {
+                        "image_path": image_path,
+                        "alt_text": alt_text,
+                        "sort_order": index,
+                        "is_active": True,
+                    },
+                )
 
     def seed_guide(self):
         places = [
