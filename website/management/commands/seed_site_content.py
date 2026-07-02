@@ -75,14 +75,62 @@ HILTON_N05_PHOTOS = [
         "Chambre 2 de l'appartement Hilton N°05",
     ),
     (
+        "Coffre-fort",
+        "/assets/hilton-n05/hilton-n05-coffre-fort.png",
+        "Coffre-fort de l'appartement Hilton N°05",
+    ),
+    (
         "Cuisine",
         "/assets/hilton-n05/hilton-n05-cuisine.png",
         "Cuisine de l'appartement Hilton N°05",
     ),
     (
-        "Toilette",
-        "/assets/hilton-n05/hilton-n05-toilette.png",
-        "Toilette de l'appartement Hilton N°05",
+        "Toilette 1",
+        "/assets/hilton-n05/hilton-n05-toilette-1.png",
+        "Toilette 1 de l'appartement Hilton N°05",
+    ),
+    (
+        "Toilette 2",
+        "/assets/hilton-n05/hilton-n05-toilette-2.png",
+        "Toilette 2 de l'appartement Hilton N°05",
+    ),
+]
+
+HILTON_N13_PHOTOS = [
+    (
+        "Salon",
+        "/assets/hilton-n13/hilton-n13-salon.png",
+        "Salon de l'appartement Hilton N°13",
+    ),
+    (
+        "Chambre 1",
+        "/assets/hilton-n13/hilton-n13-chambre-1.png",
+        "Chambre 1 de l'appartement Hilton N°13",
+    ),
+    (
+        "Chambre 2",
+        "/assets/hilton-n13/hilton-n13-chambre-2.png",
+        "Chambre 2 de l'appartement Hilton N°13",
+    ),
+    (
+        "Coffre-fort",
+        "/assets/hilton-n13/hilton-n13-coffre-fort.png",
+        "Coffre-fort de l'appartement Hilton N°13",
+    ),
+    (
+        "Cuisine",
+        "/assets/hilton-n13/hilton-n13-cuisine.png",
+        "Cuisine de l'appartement Hilton N°13",
+    ),
+    (
+        "Toilette 1",
+        "/assets/hilton-n13/hilton-n13-toilette-1.png",
+        "Toilette 1 de l'appartement Hilton N°13",
+    ),
+    (
+        "Toilette 2",
+        "/assets/hilton-n13/hilton-n13-toilette-2.png",
+        "Toilette 2 de l'appartement Hilton N°13",
     ),
 ]
 
@@ -166,6 +214,7 @@ PROPERTY_PHOTO_ALBUMS = {
     "Appartement City Center Ra1 N°B": CITY_CENTER_PHOTOS,
     "Appartement Hilton N°05": HILTON_N05_PHOTOS,
     "Appartement Hilton N°11": HILTON_N11_PHOTOS,
+    "Appartement Hilton N°13": HILTON_N13_PHOTOS,
     "Appartement Hilton N°11 - Etage 12": HILTON_N11_12TH_PHOTOS,
 }
 
