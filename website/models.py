@@ -176,7 +176,7 @@ class EventIdea(VisibleOrderedModel, ImageSourceModel):
 class PurplePearlPlan(VisibleOrderedModel, ImageSourceModel):
     key = models.SlugField("reference du plan", max_length=120, unique=True, editable=False)
     button_label = models.CharField("titre du bouton", max_length=240)
-    title = models.CharField("titre sous l'image", max_length=240)
+    title = models.CharField("titre sous l'image", max_length=240, blank=True)
     description = models.CharField("description sous l'image", max_length=300, blank=True)
     alt_text = models.CharField("description du plan architectural", max_length=240, blank=True)
     image_3d = models.ImageField(
