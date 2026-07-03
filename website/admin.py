@@ -211,7 +211,6 @@ class PurplePearlPlanAdmin(VisibleOrderedAdmin):
                     "description",
                     "sort_order",
                     "is_active",
-                    "key",
                 ),
             },
         ),
