@@ -229,8 +229,20 @@ class PurplePearlPlanAdmin(VisibleOrderedAdmin):
             {
                 "fields": (
                     "image_3d",
+                    "image_3d_title",
                     "image_3d_path",
                     "image_3d_alt_text",
+                ),
+            },
+        ),
+        (
+            "Deuxieme visuel 3D",
+            {
+                "fields": (
+                    "image_3d_secondary",
+                    "image_3d_secondary_title",
+                    "image_3d_secondary_path",
+                    "image_3d_secondary_alt_text",
                 ),
             },
         ),

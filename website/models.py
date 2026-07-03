@@ -186,6 +186,7 @@ class PurplePearlPlan(VisibleOrderedModel, ImageSourceModel):
         null=True,
         help_text="Chargez une nouvelle image si vous voulez remplacer le plan 3D actuel.",
     )
+    image_3d_title = models.CharField("titre du premier visuel 3D", max_length=120, default="Plan 3D")
     image_3d_path = models.CharField(
         "plan 3D deja dans le site",
         max_length=500,
@@ -193,6 +194,21 @@ class PurplePearlPlan(VisibleOrderedModel, ImageSourceModel):
         help_text="Exemple: /assets/purple-pearl/plans/plan-sous-sol-3d.jpg. Laissez vide si vous chargez une nouvelle image.",
     )
     image_3d_alt_text = models.CharField("description du plan 3D", max_length=240, blank=True)
+    image_3d_secondary = models.ImageField(
+        "nouveau deuxieme visuel 3D",
+        upload_to="site/images/",
+        blank=True,
+        null=True,
+        help_text="Chargez une nouvelle image si vous voulez ajouter un deuxieme visuel 3D.",
+    )
+    image_3d_secondary_title = models.CharField("titre du deuxieme visuel 3D", max_length=120, blank=True)
+    image_3d_secondary_path = models.CharField(
+        "deuxieme visuel 3D deja dans le site",
+        max_length=500,
+        blank=True,
+        help_text="Exemple: /assets/purple-pearl/plans/facade-3d-nuit.jpg. Laissez vide si vous chargez une nouvelle image.",
+    )
+    image_3d_secondary_alt_text = models.CharField("description du deuxieme visuel 3D", max_length=240, blank=True)
 
     class Meta:
         ordering = ("sort_order", "title")

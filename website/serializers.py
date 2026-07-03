@@ -125,6 +125,7 @@ class EventIdeaSerializer(serializers.ModelSerializer):
 class PurplePearlPlanSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
     image_3d = serializers.SerializerMethodField()
+    image_3d_secondary = serializers.SerializerMethodField()
 
     class Meta:
         model = PurplePearlPlan
@@ -136,8 +137,12 @@ class PurplePearlPlanSerializer(serializers.ModelSerializer):
             "description",
             "alt_text",
             "image",
+            "image_3d_title",
             "image_3d",
             "image_3d_alt_text",
+            "image_3d_secondary_title",
+            "image_3d_secondary",
+            "image_3d_secondary_alt_text",
             "sort_order",
         )
 
@@ -146,6 +151,14 @@ class PurplePearlPlanSerializer(serializers.ModelSerializer):
 
     def get_image_3d(self, obj):
         return image_url(self.context.get("request"), obj, "image_3d", "image_3d_path")
+
+    def get_image_3d_secondary(self, obj):
+        return image_url(
+            self.context.get("request"),
+            obj,
+            "image_3d_secondary",
+            "image_3d_secondary_path",
+        )
 
 
 class TestimonialSerializer(serializers.ModelSerializer):
