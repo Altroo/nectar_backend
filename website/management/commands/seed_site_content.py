@@ -141,11 +141,6 @@ HILTON_N11_PHOTOS = [
         "Salon de l'appartement Hilton N°11",
     ),
     (
-        "Salon 2",
-        "/assets/hilton-n11/hilton-n11-salon-2-large.jpg",
-        "Deuxième vue du salon de l'appartement Hilton N°11",
-    ),
-    (
         "Meuble TV",
         "/assets/hilton-n11/hilton-n11-meuble-tv-large.jpg",
         "Meuble TV de l'appartement Hilton N°11",
