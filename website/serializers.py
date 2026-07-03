@@ -14,15 +14,16 @@ from .models import (
 )
 
 
-def image_url(request, obj):
-    if obj.image:
+def image_url(request, obj, image_field="image", path_field="image_path"):
+    image = getattr(obj, image_field)
+    if image:
         try:
-            url = obj.image.url
+            url = image.url
         except ValueError:
             url = ""
         if url:
             return request.build_absolute_uri(url) if request else url
-    return obj.image_path
+    return getattr(obj, path_field)
 
 
 class SiteContactSerializer(serializers.ModelSerializer):
@@ -123,6 +124,7 @@ class EventIdeaSerializer(serializers.ModelSerializer):
 
 class PurplePearlPlanSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
+    image_3d = serializers.SerializerMethodField()
 
     class Meta:
         model = PurplePearlPlan
@@ -134,11 +136,16 @@ class PurplePearlPlanSerializer(serializers.ModelSerializer):
             "description",
             "alt_text",
             "image",
+            "image_3d",
+            "image_3d_alt_text",
             "sort_order",
         )
 
     def get_image(self, obj):
         return image_url(self.context.get("request"), obj)
+
+    def get_image_3d(self, obj):
+        return image_url(self.context.get("request"), obj, "image_3d", "image_3d_path")
 
 
 class TestimonialSerializer(serializers.ModelSerializer):

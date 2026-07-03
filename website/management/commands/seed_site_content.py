@@ -698,66 +698,86 @@ class Command(BaseCommand):
 
     def seed_purple_pearl(self):
         plans = [
-            (
-                "1. Plan sous-sol",
-                "1. Plan sous-sol",
-                "Plan du sous-sol / parking du projet Purple Pearl.",
-                "/assets/purple-pearl-plan-general.jpg",
-            ),
-            (
-                "2. Plan RDC - Locaux commerciaux",
-                "2. Plan RDC - Locaux commerciaux",
-                "Plan du rez-de-chaussée dédié aux locaux commerciaux.",
-                "/assets/purple-pearl-plan-etage-courant.jpg",
-            ),
-            (
-                "3. Plan RDC haut - Locaux commerciaux",
-                "3. Plan RDC haut - Locaux commerciaux",
-                "Plan RDC haut avec les locaux commerciaux.",
-                "/assets/purple-pearl-plan-etage-courant.jpg",
-            ),
-            (
-                "3.1. Plan RDC haut - Appartements avec cour",
-                "3.1. Plan RDC haut - Appartements avec cour",
-                "Appartements avec cour au RDC haut.",
-                "/assets/purple-pearl-plan-etage-courant.jpg",
-            ),
-            (
-                "Plans des 1er, 2e, 3e et 4e étages (Appartement type 1 - 2 - 3 - 4 - 5)",
-                "Plans des 1er, 2e, 3e et 4e étages",
-                "Appartement type 1 - 2 - 3 - 4 - 5.",
-                "/assets/purple-pearl-plan-etage-courant.jpg",
-            ),
-            (
-                "5. Plan 1er retrait (Appartement 1 - 2 - 3 - 4)",
-                "5. Plan 1er retrait",
-                "Appartement 1 - 2 - 3 - 4.",
-                "/assets/purple-pearl-plan-1er-retrait.jpg",
-            ),
-            (
-                "6. Plan 2e retrait (Appartement type 1 - 2 - 3 - 4)",
-                "6. Plan 2e retrait",
-                "Appartement type 1 - 2 - 3 - 4.",
-                "/assets/purple-pearl-plan-2eme-retrait.jpg",
-            ),
-            (
-                "Façades & situation",
-                "Façades & situation",
-                "Façades, situation du projet et images de synthèse du bâtiment.",
-                "/assets/purple-pearl-plan-facades-situation.jpg",
-            ),
+            {
+                "key": "facade",
+                "button_label": "Façade",
+                "title": "Façade",
+                "description": "Plan de façade en attente.",
+                "image_path": "",
+                "image_3d_path": "",
+            },
+            {
+                "key": "plan-coupe",
+                "button_label": "Plan Coupe",
+                "title": "Plan Coupe",
+                "description": "Coupe architecturale du projet Purple Pearl.",
+                "image_path": "/assets/purple-pearl/plans/plan-coupe-architectural.jpg",
+                "image_3d_path": "",
+            },
+            {
+                "key": "plan-sous-sol",
+                "button_label": "Plan Sous Sol",
+                "title": "Plan Sous Sol",
+                "description": "Plan du sous-sol du projet Purple Pearl.",
+                "image_path": "/assets/purple-pearl/plans/plan-sous-sol-architectural.jpg",
+                "image_3d_path": "/assets/purple-pearl/plans/plan-sous-sol-3d.jpg",
+            },
+            {
+                "key": "plan-rdc-bas-magasins",
+                "button_label": "Plan RDC BAS - MAGASINS",
+                "title": "Plan RDC BAS - MAGASINS",
+                "description": "Plan du RDC bas avec les magasins.",
+                "image_path": "/assets/purple-pearl/plans/plan-rdc-bas-magasins-architectural.jpg",
+                "image_3d_path": "/assets/purple-pearl/plans/plan-rdc-bas-magasins-3d.jpg",
+            },
+            {
+                "key": "plan-rdc-haut-app-mezzanine",
+                "button_label": "Plan RDC HAUT - APP + mezzanine",
+                "title": "Plan RDC HAUT - APP + mezzanine",
+                "description": "Plan du RDC haut avec appartements et mezzanines.",
+                "image_path": "/assets/purple-pearl/plans/plan-rdc-haut-app-mezzanine-architectural.jpg",
+                "image_3d_path": "/assets/purple-pearl/plans/plan-rdc-haut-app-mezzanine-3d.jpg",
+            },
+            {
+                "key": "plans-etages-1-2-3-4",
+                "button_label": "Plans étages 1, 2, 3 et 4",
+                "title": "Plans étages 1, 2, 3 et 4",
+                "description": "Plans des étages 1, 2, 3 et 4.",
+                "image_path": "/assets/purple-pearl/plans/plans-etages-1-4-architectural.jpg",
+                "image_3d_path": "/assets/purple-pearl/plans/plans-etages-1-4-3d.jpg",
+            },
+            {
+                "key": "plan-1er-retrait",
+                "button_label": "Plan 1er retrait",
+                "title": "Plan 1er retrait",
+                "description": "Plan du premier retrait.",
+                "image_path": "/assets/purple-pearl/plans/plan-1er-retrait-architectural.jpg",
+                "image_3d_path": "/assets/purple-pearl/plans/plan-1er-retrait-3d.jpg",
+            },
+            {
+                "key": "plan-2eme-retrait",
+                "button_label": "Plan 2eme retrait",
+                "title": "Plan 2eme retrait",
+                "description": "Plan du deuxième retrait.",
+                "image_path": "/assets/purple-pearl/plans/plan-2eme-retrait-architectural.jpg",
+                "image_3d_path": "/assets/purple-pearl/plans/plan-2eme-retrait-3d.jpg",
+            },
         ]
-        for index, (button_label, title, description, image_path) in enumerate(
-            plans, start=1
-        ):
+        PurplePearlPlan.objects.exclude(
+            key__in=[plan["key"] for plan in plans]
+        ).update(is_active=False)
+        for index, plan in enumerate(plans, start=1):
             self.upsert(
                 PurplePearlPlan,
-                {"button_label": button_label},
+                {"key": plan["key"]},
                 {
-                    "title": title,
-                    "description": description,
-                    "image_path": image_path,
-                    "alt_text": title,
+                    "button_label": plan["button_label"],
+                    "title": plan["title"],
+                    "description": plan["description"],
+                    "image_path": plan["image_path"],
+                    "alt_text": plan["title"],
+                    "image_3d_path": plan["image_3d_path"],
+                    "image_3d_alt_text": f"{plan['title']} - Plan 3D",
                     "sort_order": index,
                     "is_active": True,
                 },

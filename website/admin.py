@@ -202,19 +202,36 @@ class PurplePearlPlanAdmin(VisibleOrderedAdmin):
     readonly_fields = ("key",)
     fieldsets = (
         (
-            "Plan affiche dans Purple Pearl",
+            "Rubrique affichee dans Purple Pearl",
             {
-                "description": "Ces plans alimentent les boutons et l'image affichee dans la section Plans.",
+                "description": "Ces rubriques alimentent les boutons de la section Plans.",
                 "fields": (
                     "button_label",
                     "title",
                     "description",
-                    "image",
-                    "image_path",
-                    "alt_text",
                     "sort_order",
                     "is_active",
                     "key",
+                ),
+            },
+        ),
+        (
+            "Plan architectural",
+            {
+                "fields": (
+                    "image",
+                    "image_path",
+                    "alt_text",
+                ),
+            },
+        ),
+        (
+            "Plan 3D",
+            {
+                "fields": (
+                    "image_3d",
+                    "image_3d_path",
+                    "image_3d_alt_text",
                 ),
             },
         ),

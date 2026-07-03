@@ -178,7 +178,21 @@ class PurplePearlPlan(VisibleOrderedModel, ImageSourceModel):
     button_label = models.CharField("titre du bouton", max_length=240)
     title = models.CharField("titre sous l'image", max_length=240)
     description = models.CharField("description sous l'image", max_length=300, blank=True)
-    alt_text = models.CharField("description de l'image", max_length=240, blank=True)
+    alt_text = models.CharField("description du plan architectural", max_length=240, blank=True)
+    image_3d = models.ImageField(
+        "nouveau plan 3D",
+        upload_to="site/images/",
+        blank=True,
+        null=True,
+        help_text="Chargez une nouvelle image si vous voulez remplacer le plan 3D actuel.",
+    )
+    image_3d_path = models.CharField(
+        "plan 3D deja dans le site",
+        max_length=500,
+        blank=True,
+        help_text="Exemple: /assets/purple-pearl/plans/plan-sous-sol-3d.jpg. Laissez vide si vous chargez une nouvelle image.",
+    )
+    image_3d_alt_text = models.CharField("description du plan 3D", max_length=240, blank=True)
 
     class Meta:
         ordering = ("sort_order", "title")
