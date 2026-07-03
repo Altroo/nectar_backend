@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from django.db.models import Q
 
 from website.models import (
     EventIdea,
@@ -697,6 +698,26 @@ class Command(BaseCommand):
             )
 
     def seed_purple_pearl(self):
+        old_plan_keys = [
+            "general",
+            "etage1",
+            "etage2",
+            "etage3",
+            "etage4",
+            "etage5",
+            "etage6",
+            "facades",
+        ]
+        old_plan_labels = [
+            "1. Plan sous-sol",
+            "2. Plan RDC - Locaux commerciaux",
+            "3. Plan RDC haut - Locaux commerciaux",
+            "3.1. Plan RDC haut - Appartements avec cour",
+            "Plans des 1er, 2e, 3e et 4e étages (Appartement type 1 - 2 - 3 - 4 - 5)",
+            "5. Plan 1er retrait (Appartement 1 - 2 - 3 - 4)",
+            "6. Plan 2e retrait (Appartement type 1 - 2 - 3 - 4)",
+            "Façades & situation",
+        ]
         plans = [
             {
                 "key": "facade",
@@ -763,9 +784,9 @@ class Command(BaseCommand):
                 "image_3d_path": "/assets/purple-pearl/plans/plan-2eme-retrait-3d.jpg",
             },
         ]
-        PurplePearlPlan.objects.exclude(
-            key__in=[plan["key"] for plan in plans]
-        ).update(is_active=False)
+        PurplePearlPlan.objects.filter(
+            Q(key__in=old_plan_keys) | Q(button_label__in=old_plan_labels)
+        ).delete()
         for index, plan in enumerate(plans, start=1):
             self.upsert(
                 PurplePearlPlan,
