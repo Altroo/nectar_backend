@@ -596,6 +596,18 @@ class Command(BaseCommand):
             ),
             (
                 "musees",
+                "Musée de la Légation américaine",
+                "La Légation américaine abrite un petit musée historique qui mérite une visite, notamment pour les personnes intéressées par les relations entre le Maroc et les États-Unis à travers les siècles. Située à proximité de la médina, elle se découvre facilement lors d’un détour pendant votre visite.",
+                "/guide-photos/musees/musee-legation-americaine.jpg",
+            ),
+            (
+                "musees",
+                "Musée Dar Niaba",
+                "Dar Niaba est un musée historique situé dans la médina de Tanger. Il retrace une partie de l’histoire diplomatique du Maroc et met en valeur le rôle de Tanger comme lieu d’échanges entre différentes cultures.",
+                "/guide-photos/musees/musee-dar-niaba.jpg",
+            ),
+            (
+                "musees",
                 "Musée de la Kasbah — Espace d’art contemporain",
                 "Espace culturel dédié aux expositions temporaires, rencontres artistiques et à la création contemporaine.",
                 "/guide-photos/musees/musee-kasbah-espace-art-contemporain.jpg",
