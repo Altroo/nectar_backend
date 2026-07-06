@@ -380,6 +380,16 @@ class Command(BaseCommand):
                 "74 m²",
             ),
             (
+                "MANDELSON BLOC A · N°47",
+                "MANDELSON BLOC A",
+                "Iberia",
+                "ETAGE 06",
+                "N°47",
+                3,
+                102,
+                "102 m²",
+            ),
+            (
                 "MARINA BLOC B · N°302",
                 "MARINA BLOC B",
                 "Marina",
@@ -408,16 +418,6 @@ class Command(BaseCommand):
                 3,
                 341,
                 "261 m² vendu",
-            ),
-            (
-                "MANDELSON BLOC A · N°47",
-                "MANDELSON BLOC A",
-                "Iberia",
-                "ETAGE 06",
-                "N°47",
-                3,
-                102,
-                "102 m²",
             ),
         ]
         hidden_sale_titles = {"HILTON · N°03"}
