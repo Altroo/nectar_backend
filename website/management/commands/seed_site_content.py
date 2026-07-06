@@ -265,6 +265,19 @@ PROPERTY_PHOTO_ALBUMS = {
     "MANDELSON BLOC A · N°47": MANDELSON_N47_PHOTOS,
 }
 
+HILTON_N05_DESCRIPTION = (
+    "Profitez d’un séjour élégant dans cet appartement situé au sein de l’hôtel "
+    "Hilton à Tanger. Avec sa vue imprenable sur la Méditerranée, son cadre "
+    "sécurisé et son ambiance calme et luxueuse, il offre l’endroit idéal pour se "
+    "détendre et vivre pleinement vos vacances."
+)
+
+CITY_CENTER_RA1_DESCRIPTION = (
+    "Situé en plein centre-ville de Tanger, à proximité de la gare TGV, cet "
+    "appartement offre une vue sur la ville et un cadre confortable, idéal pour "
+    "un séjour pratique et agréable."
+)
+
 
 class Command(BaseCommand):
     help = "Ajoute le contenu de depart editable dans l'administration Nectar."
@@ -366,6 +379,7 @@ class Command(BaseCommand):
                 "102 m²",
             ),
         ]
+        hidden_sale_titles = {"HILTON · N°03"}
         for index, item in enumerate(sale_apartments, start=1):
             title, residence, district, floor, unit_number, bedrooms, surface, sold = (
                 item
@@ -399,7 +413,7 @@ class Command(BaseCommand):
                     "surface_sold": sold,
                     "cta_label": "Demander le prix →",
                     "sort_order": index,
-                    "is_active": True,
+                    "is_active": title not in hidden_sale_titles,
                 },
             )
 
@@ -450,6 +464,10 @@ class Command(BaseCommand):
                 1500,
             ),
         ]
+        rent_descriptions = {
+            "Appartement Hilton N°05": HILTON_N05_DESCRIPTION,
+            "Appartement City Center Ra1 N°B": CITY_CENTER_RA1_DESCRIPTION,
+        }
         for index, item in enumerate(rent_apartments, start=101):
             title, residence, floor, unit_number, bedrooms, price, numeric_price = item
             address = (
@@ -469,12 +487,15 @@ class Command(BaseCommand):
                     "residence": residence,
                     "district": "Centre-ville",
                     "address": address,
-                    "description": f"{address}. Appartement disponible à la location, sélectionné pour un séjour confortable à Tanger.",
+                    "description": rent_descriptions.get(
+                        title,
+                        f"{address}. Appartement disponible à la location, sélectionné pour un séjour confortable à Tanger.",
+                    ),
                     "floor": floor,
                     "unit_number": unit_number,
                     "bedrooms": bedrooms,
                     "price": price,
-                    "price_note": "Prix indiqué pour juin.",
+                    "price_note": "Prix indiqué pour juillet.",
                     "cta_label": "Demander la disponibilité →",
                     "sort_order": index,
                     "is_active": True,
