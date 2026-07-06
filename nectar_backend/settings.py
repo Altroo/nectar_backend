@@ -40,6 +40,47 @@ SITE_EMAIL = config("SITE_EMAIL", default="info@nectar.ma")
 SITE_EMAIL_DISPLAY = config("SITE_EMAIL_DISPLAY", default="contact@nectar.ma")
 SITE_DEFAULT_LANG = config("SITE_DEFAULT_LANG", default="fr")
 
+EMAIL_BACKEND = config(
+    "EMAIL_BACKEND",
+    default="django.core.mail.backends.console.EmailBackend",
+)
+EMAIL_HOST = config("EMAIL_HOST", default="smtp.gmail.com")
+EMAIL_PORT = config("EMAIL_PORT", default="587", cast=int)
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", default="True", cast=bool)
+EMAIL_USE_SSL = config("EMAIL_USE_SSL", default="False", cast=bool)
+EMAIL_TIMEOUT = config("EMAIL_TIMEOUT", default="30", cast=int)
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default=SITE_EMAIL)
+SERVER_EMAIL = config("SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
+CONTACT_NOTIFICATION_EMAILS = [
+    email.strip()
+    for email in config(
+        "CONTACT_NOTIFICATION_EMAILS",
+        default=config("CONTACT_REQUEST_RECIPIENT", default="contact@nectar.ma"),
+    ).split(",")
+    if email.strip()
+]
+PURPLE_PEARL_VISIT_NOTIFICATION_EMAILS = [
+    email.strip()
+    for email in config(
+        "PURPLE_PEARL_VISIT_NOTIFICATION_EMAILS",
+        default=config("PURPLE_PEARL_VISIT_RECIPIENT", default=",".join(CONTACT_NOTIFICATION_EMAILS)),
+    ).split(",")
+    if email.strip()
+]
+NEWSLETTER_NOTIFICATION_EMAILS = [
+    email.strip()
+    for email in config(
+        "NEWSLETTER_NOTIFICATION_EMAILS",
+        default=config("NEWSLETTER_RECIPIENT", default="info@nectar.ma"),
+    ).split(",")
+    if email.strip()
+]
+CONTACT_REQUEST_RECIPIENT = ",".join(CONTACT_NOTIFICATION_EMAILS)
+PURPLE_PEARL_VISIT_RECIPIENT = ",".join(PURPLE_PEARL_VISIT_NOTIFICATION_EMAILS)
+NEWSLETTER_RECIPIENT = ",".join(NEWSLETTER_NOTIFICATION_EMAILS)
+
 INSTALLED_APPS = [
     "account.apps.AccountConfig",
     "django.contrib.admin",

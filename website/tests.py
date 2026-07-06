@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
-from django.test import TestCase
+from django.core import mail
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
-from .models import ContactRequest, NewsletterSignup, Property, PropertyPhoto
+from .models import ContactRequest, NewsletterSignup, Property, PropertyPhoto, PurplePearlVisitRequest
 
 
 class PublicSiteApiTests(TestCase):
@@ -35,7 +36,14 @@ class PublicSiteApiTests(TestCase):
             "/assets/city-center/city-center-salon.png",
         )
 
-    def test_contact_and_newsletter_forms_create_admin_entries(self):
+    @override_settings(
+        CONTACT_NOTIFICATION_EMAILS=["contact@nectar.ma"],
+        DEFAULT_FROM_EMAIL="website@nectar.ma",
+        EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
+        NEWSLETTER_NOTIFICATION_EMAILS=["info@nectar.ma"],
+        PURPLE_PEARL_VISIT_NOTIFICATION_EMAILS=["contact@nectar.ma"],
+    )
+    def test_contact_newsletter_and_visit_forms_create_admin_entries_and_notify(self):
         contact_response = self.client.post(
             reverse("contact-requests"),
             {
@@ -47,6 +55,20 @@ class PublicSiteApiTests(TestCase):
             },
             content_type="application/json",
         )
+        visit_response = self.client.post(
+            reverse("purple-pearl-visits"),
+            {
+                "visit_type": "Visite projet",
+                "preferred_date": "2026-07-22",
+                "preferred_time": "10:00",
+                "full_name": "Client Purple",
+                "phone": "0700000000",
+                "email": "purple@example.com",
+                "message": "Je souhaite visiter le projet.",
+                "consent": True,
+            },
+            content_type="application/json",
+        )
         newsletter_response = self.client.post(
             reverse("newsletter-signups"),
             {"email": "client@example.com", "source": "home"},
@@ -54,9 +76,20 @@ class PublicSiteApiTests(TestCase):
         )
 
         self.assertEqual(contact_response.status_code, 201)
+        self.assertEqual(visit_response.status_code, 201)
         self.assertEqual(newsletter_response.status_code, 201)
         self.assertEqual(ContactRequest.objects.count(), 1)
+        self.assertEqual(PurplePearlVisitRequest.objects.count(), 1)
         self.assertEqual(NewsletterSignup.objects.count(), 1)
+        self.assertEqual(len(mail.outbox), 3)
+        self.assertEqual(mail.outbox[0].to, ["contact@nectar.ma"])
+        self.assertIn("Nouvelle demande de contact", mail.outbox[0].subject)
+        self.assertIn("Client Test", mail.outbox[0].body)
+        self.assertEqual(mail.outbox[1].to, ["contact@nectar.ma"])
+        self.assertIn("Nouvelle demande de visite", mail.outbox[1].subject)
+        self.assertIn("Client Purple", mail.outbox[1].body)
+        self.assertEqual(mail.outbox[2].to, ["info@nectar.ma"])
+        self.assertIn("Nouvelle inscription newsletter", mail.outbox[2].subject)
 
 
 class AdminEmailLoginTests(TestCase):
