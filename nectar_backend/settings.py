@@ -37,7 +37,7 @@ SITE_PHONE_DISPLAY = config(
     "SITE_PHONE_DISPLAY", default="06 75 59 92 56 / 07 73 86 35 85"
 )
 SITE_EMAIL = config("SITE_EMAIL", default="info@nectar.ma")
-SITE_EMAIL_DISPLAY = config("SITE_EMAIL_DISPLAY", default="info@nectar.ma / contact@nectar.ma")
+SITE_EMAIL_DISPLAY = config("SITE_EMAIL_DISPLAY", default="contact@nectar.ma")
 SITE_DEFAULT_LANG = config("SITE_DEFAULT_LANG", default="fr")
 
 INSTALLED_APPS = [

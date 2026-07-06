@@ -55,7 +55,7 @@ class SiteContact(VisibleOrderedModel):
     email_display = models.CharField(
         "emails affiches",
         max_length=200,
-        default="info@nectar.ma / contact@nectar.ma",
+        default="contact@nectar.ma",
     )
 
     class Meta:

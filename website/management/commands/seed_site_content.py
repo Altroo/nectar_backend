@@ -272,6 +272,42 @@ HILTON_N05_DESCRIPTION = (
     "détendre et vivre pleinement vos vacances."
 )
 
+HILTON_N11_RENT_DESCRIPTION = (
+    "Profitez d’un séjour raffiné dans cet appartement situé au sein de l’hôtel "
+    "Hilton à Tanger. Offrant une vue exceptionnelle sur la Méditerranée, un "
+    "cadre sécurisé et une atmosphère calme et élégante, il réunit toutes les "
+    "conditions pour des vacances reposantes et mémorables."
+)
+
+HILTON_N13_RENT_DESCRIPTION = (
+    "Séjournez dans un appartement élégant au cœur de l’hôtel Hilton à Tanger, "
+    "où confort, sécurité et tranquillité se rencontrent. Sa vue imprenable sur "
+    "la Méditerranée et son ambiance luxueuse en font l’adresse idéale pour "
+    "profiter pleinement de votre séjour."
+)
+
+HILTON_N11_12TH_RENT_DESCRIPTION = (
+    "Vivez une expérience unique dans cet appartement situé au sein de l’hôtel "
+    "Hilton à Tanger. Entre vue panoramique sur la Méditerranée, environnement "
+    "sécurisé et ambiance paisible, ce lieu vous invite à la détente dans un "
+    "cadre chic et confortable."
+)
+
+HILTON_N11_SALE_DESCRIPTION = (
+    "Découvrez cet appartement d’exception situé au sein de l’hôtel Hilton à "
+    "Tanger. Offrant une vue imprenable sur la Méditerranée, un cadre sécurisé "
+    "et une ambiance calme et luxueuse, ce bien représente une opportunité "
+    "idéale pour un investissement de qualité ou une résidence élégante au cœur "
+    "de la ville."
+)
+
+HILTON_N13_SALE_DESCRIPTION = (
+    "À vendre, superbe appartement situé dans l’une des adresses les plus "
+    "prestigieuses de Tanger, au sein de l’hôtel Hilton. Avec sa vue panoramique "
+    "sur la Méditerranée, son environnement sécurisé et son cadre raffiné, ce "
+    "bien allie confort, élégance et fort potentiel d’investissement."
+)
+
 CITY_CENTER_RA1_DESCRIPTION = (
     "Situé en plein centre-ville de Tanger, à proximité de la gare TGV, cet "
     "appartement offre une vue sur la ville et un cadre confortable, idéal pour "
@@ -283,14 +319,19 @@ class Command(BaseCommand):
     help = "Ajoute le contenu de depart editable dans l'administration Nectar."
 
     def handle(self, *args, **options):
-        SiteContact.objects.get_or_create(
-            defaults={
-                "address": "Tanger, Maroc",
-                "phone_display": "06 75 59 92 56 / 07 73 86 35 85",
-                "whatsapp_number": "212675599256",
-                "email_display": "info@nectar.ma / contact@nectar.ma",
-            }
-        )
+        contact_values = {
+            "address": "Tanger, Maroc",
+            "phone_display": "06 75 59 92 56 / 07 73 86 35 85",
+            "whatsapp_number": "212675599256",
+            "email_display": "contact@nectar.ma",
+        }
+        contact = SiteContact.objects.order_by("sort_order", "id").first()
+        if contact:
+            for key, value in contact_values.items():
+                setattr(contact, key, value)
+            contact.save()
+        else:
+            SiteContact.objects.create(**contact_values)
         self.seed_properties()
         self.seed_guide()
         self.seed_events()
@@ -380,6 +421,10 @@ class Command(BaseCommand):
             ),
         ]
         hidden_sale_titles = {"HILTON · N°03"}
+        sale_descriptions = {
+            "HILTON · N°11": HILTON_N11_SALE_DESCRIPTION,
+            "HILTON · N°13": HILTON_N13_SALE_DESCRIPTION,
+        }
         for index, item in enumerate(sale_apartments, start=1):
             title, residence, district, floor, unit_number, bedrooms, surface, sold = (
                 item
@@ -405,7 +450,10 @@ class Command(BaseCommand):
                     "residence": residence,
                     "district": district,
                     "address": address,
-                    "description": f"{address}. Un appartement clair et bien situé pour résidence principale, investissement ou pied-à-terre à Tanger.",
+                    "description": sale_descriptions.get(
+                        title,
+                        f"{address}. Un appartement clair et bien situé pour résidence principale, investissement ou pied-à-terre à Tanger.",
+                    ),
                     "floor": floor,
                     "unit_number": unit_number,
                     "bedrooms": bedrooms,
@@ -466,6 +514,9 @@ class Command(BaseCommand):
         ]
         rent_descriptions = {
             "Appartement Hilton N°05": HILTON_N05_DESCRIPTION,
+            "Appartement Hilton N°11": HILTON_N11_RENT_DESCRIPTION,
+            "Appartement Hilton N°13": HILTON_N13_RENT_DESCRIPTION,
+            "Appartement Hilton N°11 - Etage 12": HILTON_N11_12TH_RENT_DESCRIPTION,
             "Appartement City Center Ra1 N°B": CITY_CENTER_RA1_DESCRIPTION,
         }
         for index, item in enumerate(rent_apartments, start=101):
