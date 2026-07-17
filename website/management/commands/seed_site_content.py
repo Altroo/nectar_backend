@@ -576,7 +576,9 @@ class Command(BaseCommand):
         ]
         for index, item in enumerate(commercial_units, start=201):
             title, unit_type, surface, rdc, mezzanine, total_sold = item
-            self.upsert(
+            unit_code = title.split(" · ")[0].replace("Local ", "")
+            image_path = f"/assets/erasmus/units/{unit_code}.jpg"
+            property_obj = self.upsert(
                 Property,
                 {
                     "title": title,
@@ -597,9 +599,19 @@ class Command(BaseCommand):
                     "project_label": f"RDC {rdc}",
                     "price_note": unit_type,
                     "cta_label": "Demander la disponibilité →",
+                    "image_path": image_path,
                     "sort_order": index,
                     "is_active": True,
                 },
+            )
+            PropertyPhoto.objects.filter(property=property_obj).delete()
+            PropertyPhoto.objects.create(
+                property=property_obj,
+                title=f"Local {unit_code}",
+                image_path=image_path,
+                alt_text=f"Local {unit_code} · Erasmus Tower",
+                sort_order=1,
+                is_active=True,
             )
 
     def seed_property_photo_albums(self):
