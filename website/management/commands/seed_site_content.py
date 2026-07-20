@@ -59,6 +59,49 @@ CITY_CENTER_PHOTOS = [
     ),
 ]
 
+HILTON_N03_PHOTOS = [
+    (
+        "Salon",
+        "/assets/hilton-n03/hilton-n03-salon-large.jpg",
+        "Salon de l'appartement Hilton N°03",
+    ),
+    (
+        "Meuble TV",
+        "/assets/hilton-n03/hilton-n03-meuble-tv-large.jpg",
+        "Meuble TV de l'appartement Hilton N°03",
+    ),
+    (
+        "Chambre",
+        "/assets/hilton-n03/hilton-n03-chambre-large.jpg",
+        "Chambre de l'appartement Hilton N°03",
+    ),
+    (
+        "Placard",
+        "/assets/hilton-n03/hilton-n03-placard-large.jpg",
+        "Placard de l'appartement Hilton N°03",
+    ),
+    (
+        "Coffre-fort",
+        "/assets/hilton-n03/hilton-n03-coffre-fort-large.jpg",
+        "Coffre-fort de l'appartement Hilton N°03",
+    ),
+    (
+        "Cuisine",
+        "/assets/hilton-n03/hilton-n03-cuisine-large.jpg",
+        "Cuisine de l'appartement Hilton N°03",
+    ),
+    (
+        "Toilette",
+        "/assets/hilton-n03/hilton-n03-toilette-large.jpg",
+        "Toilette de l'appartement Hilton N°03",
+    ),
+    (
+        "Vue",
+        "/assets/hilton-n03/hilton-n03-vue-large.jpg",
+        "Vue sur la Méditerranée depuis l'appartement Hilton N°03",
+    ),
+]
+
 HILTON_N05_PHOTOS = [
     (
         "Salon",
@@ -260,6 +303,7 @@ PROPERTY_PHOTO_ALBUMS = {
     "Appartement Hilton N°11": HILTON_N11_PHOTOS,
     "Appartement Hilton N°13": HILTON_N13_PHOTOS,
     "Appartement Hilton N°11 - Etage 12": HILTON_N11_12TH_PHOTOS,
+    "HILTON · N°03": HILTON_N03_PHOTOS,
     "HILTON · N°11": HILTON_N11_PHOTOS,
     "HILTON · N°13": HILTON_N13_PHOTOS,
     "MANDELSON BLOC A · N°47": MANDELSON_N47_PHOTOS,
@@ -299,6 +343,14 @@ HILTON_N11_SALE_DESCRIPTION = (
     "et une ambiance calme et luxueuse, ce bien représente une opportunité "
     "idéale pour un investissement de qualité ou une résidence élégante au cœur "
     "de la ville."
+)
+
+HILTON_N03_SALE_DESCRIPTION = (
+    "À vendre, superbe appartement situé au 10ᵉ étage de la résidence Hilton, "
+    "l’une des adresses les plus prestigieuses de Tanger. Offrant une vue "
+    "panoramique exceptionnelle sur la Méditerranée, ce bien bénéficie d’un "
+    "environnement sécurisé et d’un cadre élégant. Il constitue une excellente "
+    "opportunité pour y vivre ou réaliser un investissement immobilier de qualité."
 )
 
 HILTON_N13_SALE_DESCRIPTION = (
@@ -420,8 +472,8 @@ class Command(BaseCommand):
                 "261 m² vendu",
             ),
         ]
-        hidden_sale_titles = {"HILTON · N°03"}
         sale_descriptions = {
+            "HILTON · N°03": HILTON_N03_SALE_DESCRIPTION,
             "HILTON · N°11": HILTON_N11_SALE_DESCRIPTION,
             "HILTON · N°13": HILTON_N13_SALE_DESCRIPTION,
         }
@@ -461,7 +513,7 @@ class Command(BaseCommand):
                     "surface_sold": sold,
                     "cta_label": "Demander le prix →",
                     "sort_order": index,
-                    "is_active": title not in hidden_sale_titles,
+                    "is_active": True,
                 },
             )
 
