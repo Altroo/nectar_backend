@@ -67,12 +67,13 @@ class PropertyAdmin(VisibleOrderedAdmin):
         "title",
         "transaction",
         "property_type",
+        "is_sold",
         "residence",
         "district",
         "price",
         "is_active",
     )
-    list_filter = ("transaction", "property_type", "residence", "district", "is_active")
+    list_filter = ("transaction", "property_type", "is_sold", "residence", "district", "is_active")
     search_fields = ("title", "tag", "residence", "district", "address", "description", "unit_number")
     inlines = (PropertyPhotoInline,)
     fieldsets = (
@@ -82,6 +83,7 @@ class PropertyAdmin(VisibleOrderedAdmin):
                 "fields": (
                     "transaction",
                     "property_type",
+                    "is_sold",
                     "sort_order",
                     "is_active",
                 )

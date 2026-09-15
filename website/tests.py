@@ -11,6 +11,7 @@ class PublicSiteApiTests(TestCase):
         property_obj = Property.objects.create(
             transaction=Property.SALE,
             property_type=Property.APARTMENT,
+            is_sold=True,
             title="Appartement test",
             residence="Hilton",
             bedrooms=2,
@@ -29,6 +30,7 @@ class PublicSiteApiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         payload = response.json()
         self.assertEqual(payload["properties"][0]["title"], "Appartement test")
+        self.assertIs(payload["properties"][0]["is_sold"], True)
         self.assertEqual(payload["properties"][0]["surface_total"], 74.0)
         self.assertEqual(payload["properties"][0]["photos"][0]["title"], "Salon")
         self.assertEqual(

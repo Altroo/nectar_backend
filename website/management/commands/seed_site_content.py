@@ -498,6 +498,7 @@ class Command(BaseCommand):
                     "property_type": Property.APARTMENT,
                 },
                 {
+                    "is_sold": title == "MANDELSON BLOC A · N°47",
                     "tag": f"{district} · Appartement à vendre",
                     "residence": residence,
                     "district": district,

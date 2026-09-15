@@ -84,6 +84,11 @@ class Property(VisibleOrderedModel, ImageSourceModel):
 
     transaction = models.CharField("vente ou location", max_length=12, choices=TRANSACTION_CHOICES)
     property_type = models.CharField("type de bien", max_length=20, choices=PROPERTY_TYPE_CHOICES)
+    is_sold = models.BooleanField(
+        "vendu",
+        default=False,
+        help_text="Cochez pour conserver le bien visible sur le site avec la mention Vendu.",
+    )
     title = models.CharField("titre de l'annonce", max_length=200)
     tag = models.CharField("petite ligne au-dessus du titre", max_length=200, blank=True)
     residence = models.CharField("residence", max_length=160, blank=True)
