@@ -498,7 +498,8 @@ class Command(BaseCommand):
                     "property_type": Property.APARTMENT,
                 },
                 {
-                    "is_sold": title == "MANDELSON BLOC A · N°47",
+                    "is_sold": title
+                    in {"HILTON · N°11", "MANDELSON BLOC A · N°47"},
                     "tag": f"{district} · Appartement à vendre",
                     "residence": residence,
                     "district": district,
@@ -587,6 +588,7 @@ class Command(BaseCommand):
                     "property_type": Property.APARTMENT,
                 },
                 {
+                    "is_sold": title == "Appartement Hilton N°11",
                     "tag": f"{residence} · {floor} · {unit_number}",
                     "residence": residence,
                     "district": "Centre-ville",

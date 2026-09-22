@@ -85,6 +85,8 @@ class PropertySerializer(serializers.ModelSerializer):
         return image_url(self.context.get("request"), obj)
 
     def get_photos(self, obj):
+        if obj.is_sold:
+            return []
         return PropertyPhotoSerializer(
             obj.photos.filter(is_active=True).order_by("sort_order", "id"),
             many=True,
