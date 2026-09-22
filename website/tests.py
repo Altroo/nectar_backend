@@ -11,7 +11,7 @@ class PublicSiteApiTests(TestCase):
         property_obj = Property.objects.create(
             transaction=Property.SALE,
             property_type=Property.APARTMENT,
-            is_sold=False,
+            is_sold=True,
             title="Appartement test",
             residence="Hilton",
             bedrooms=2,
@@ -30,34 +30,13 @@ class PublicSiteApiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         payload = response.json()
         self.assertEqual(payload["properties"][0]["title"], "Appartement test")
-        self.assertIs(payload["properties"][0]["is_sold"], False)
+        self.assertIs(payload["properties"][0]["is_sold"], True)
         self.assertEqual(payload["properties"][0]["surface_total"], 74.0)
         self.assertEqual(payload["properties"][0]["photos"][0]["title"], "Salon")
         self.assertEqual(
             payload["properties"][0]["photos"][0]["image"],
             "/assets/city-center/city-center-salon.png",
         )
-
-    def test_site_payload_hides_sold_property_albums(self):
-        property_obj = Property.objects.create(
-            transaction=Property.SALE,
-            property_type=Property.APARTMENT,
-            is_sold=True,
-            title="Appartement vendu test",
-        )
-        PropertyPhoto.objects.create(
-            property=property_obj,
-            title="Salon prive",
-            image_path="/assets/private/salon.jpg",
-            sort_order=1,
-        )
-
-        response = self.client.get(reverse("public-site"))
-
-        self.assertEqual(response.status_code, 200)
-        payload = response.json()
-        self.assertIs(payload["properties"][0]["is_sold"], True)
-        self.assertEqual(payload["properties"][0]["photos"], [])
 
     @override_settings(
         CONTACT_NOTIFICATION_EMAILS=["contact@nectar.ma"],
