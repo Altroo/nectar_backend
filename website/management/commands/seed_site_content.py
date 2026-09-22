@@ -592,7 +592,8 @@ class Command(BaseCommand):
                     "property_type": Property.APARTMENT,
                 },
                 {
-                    "is_sold": title == "Appartement Hilton N°11",
+                    "is_sold": title
+                    in {"Appartement Hilton N°11", "Appartement Hilton N°13"},
                     "tag": f"{residence} · {floor} · {unit_number}",
                     "residence": residence,
                     "district": "Centre-ville",
