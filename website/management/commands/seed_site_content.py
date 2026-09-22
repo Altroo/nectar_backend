@@ -499,7 +499,11 @@ class Command(BaseCommand):
                 },
                 {
                     "is_sold": title
-                    in {"HILTON · N°11", "MANDELSON BLOC A · N°47"},
+                    in {
+                        "HILTON · N°11",
+                        "HILTON · N°13",
+                        "MANDELSON BLOC A · N°47",
+                    },
                     "tag": f"{district} · Appartement à vendre",
                     "residence": residence,
                     "district": district,
