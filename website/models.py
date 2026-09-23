@@ -89,6 +89,11 @@ class Property(VisibleOrderedModel, ImageSourceModel):
         default=False,
         help_text="Cochez pour conserver le bien visible sur le site avec la mention Vendu.",
     )
+    is_rented = models.BooleanField(
+        "loue",
+        default=False,
+        help_text="Cochez pour conserver le bien visible sur le site avec la mention Loue.",
+    )
     title = models.CharField("titre de l'annonce", max_length=200)
     tag = models.CharField("petite ligne au-dessus du titre", max_length=200, blank=True)
     residence = models.CharField("residence", max_length=160, blank=True)

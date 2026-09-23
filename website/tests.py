@@ -31,12 +31,32 @@ class PublicSiteApiTests(TestCase):
         payload = response.json()
         self.assertEqual(payload["properties"][0]["title"], "Appartement test")
         self.assertIs(payload["properties"][0]["is_sold"], True)
+        self.assertIs(payload["properties"][0]["is_rented"], False)
         self.assertEqual(payload["properties"][0]["surface_total"], 74.0)
         self.assertEqual(payload["properties"][0]["photos"][0]["title"], "Salon")
         self.assertEqual(
             payload["properties"][0]["photos"][0]["image"],
             "/assets/city-center/city-center-salon.png",
         )
+
+    def test_site_payload_exposes_rented_commercial_status(self):
+        Property.objects.create(
+            transaction=Property.RENT,
+            property_type=Property.COMMERCIAL,
+            is_rented=True,
+            title="Local A4 · ERASMUS TOWER",
+            floor="",
+        )
+
+        response = self.client.get(
+            reverse("properties"),
+            {"transaction": "rent", "property_type": "commercial"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload[0]["title"], "Local A4 · ERASMUS TOWER")
+        self.assertIs(payload[0]["is_rented"], True)
 
     @override_settings(
         CONTACT_NOTIFICATION_EMAILS=["contact@nectar.ma"],

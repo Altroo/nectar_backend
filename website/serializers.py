@@ -60,6 +60,7 @@ class PropertySerializer(serializers.ModelSerializer):
             "transaction",
             "property_type",
             "is_sold",
+            "is_rented",
             "title",
             "tag",
             "residence",
