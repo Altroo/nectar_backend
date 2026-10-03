@@ -341,6 +341,22 @@ MARINA_N306_PHOTOS = [
     ("WC", "/assets/marina-n306/marina-n306-wc-large.jpg", "WC de l'appartement Marina N°306"),
 ]
 
+HILTON_137M2_SALE_DESCRIPTION = (
+    "Découvrez cet appartement d’exception situé à Hilton Résidence à Tanger. "
+    "Offrant une vue imprenable sur la Méditerranée, un cadre sécurisé et une ambiance calme et luxueuse, ce bien représente une opportunité idéale pour un investissement de qualité ou une résidence élégante au cœur de la ville. "
+    "Le parking est inclus dans le prix de vente."
+)
+
+HILTON_137M2_PHOTOS = [
+    ("Salon", "/assets/hilton-137m2/hilton-137m2-01-large.jpg", "Salon de l'appartement Hilton de 137 m²"),
+    ("Séjour", "/assets/hilton-137m2/hilton-137m2-02-large.jpg", "Séjour de l'appartement Hilton de 137 m²"),
+    ("Cuisine", "/assets/hilton-137m2/hilton-137m2-03-large.jpg", "Cuisine de l'appartement Hilton de 137 m²"),
+    ("Chambre 1", "/assets/hilton-137m2/hilton-137m2-04-large.jpg", "Chambre 1 de l'appartement Hilton de 137 m²"),
+    ("Chambre 2", "/assets/hilton-137m2/hilton-137m2-05-large.jpg", "Chambre 2 de l'appartement Hilton de 137 m²"),
+    ("Chambre 3", "/assets/hilton-137m2/hilton-137m2-06-large.jpg", "Chambre 3 de l'appartement Hilton de 137 m²"),
+    ("Toilette", "/assets/hilton-137m2/hilton-137m2-07-large.jpg", "Toilette de l'appartement Hilton de 137 m²"),
+]
+
 PROPERTY_PHOTO_ALBUMS = {
     "Appartement City Center Ra1 N°B": CITY_CENTER_PHOTOS,
     "Appartement Hilton N°05": HILTON_N05_PHOTOS,
@@ -350,6 +366,7 @@ PROPERTY_PHOTO_ALBUMS = {
     "HILTON · N°03": HILTON_N03_PHOTOS,
     "HILTON · N°11": HILTON_N11_PHOTOS,
     "HILTON · N°13": HILTON_N13_PHOTOS,
+    "HILTON · 137 m²": HILTON_137M2_PHOTOS,
     "MANDELSON BLOC A · N°47": MANDELSON_N47_PHOTOS,
     "MARINA BLOC B · N°302": MARINA_N302_PHOTOS,
     "MARINA BLOC B · N°303": MARINA_N303_PHOTOS,
@@ -518,11 +535,22 @@ class Command(BaseCommand):
                 341,
                 "261 m² vendu",
             ),
+            (
+                "HILTON · 137 m²",
+                "HILTON",
+                "Centre-ville",
+                "ETAGE 09",
+                "",
+                3,
+                137,
+                "137 m²",
+            ),
         ]
         sale_descriptions = {
             "HILTON · N°03": HILTON_N03_SALE_DESCRIPTION,
             "HILTON · N°11": HILTON_N11_SALE_DESCRIPTION,
             "HILTON · N°13": HILTON_N13_SALE_DESCRIPTION,
+            "HILTON · 137 m²": HILTON_137M2_SALE_DESCRIPTION,
         }
         for index, item in enumerate(sale_apartments, start=1):
             title, residence, district, floor, unit_number, bedrooms, surface, sold = (
