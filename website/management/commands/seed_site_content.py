@@ -547,6 +547,9 @@ class Command(BaseCommand):
             ),
         ]
         sale_descriptions = {
+            "MARINA BLOC B · N°302": "Offrez-vous une adresse privilégiée à Tanger Marina Bay. Spacieux et baigné de lumière, cet appartement bénéficie d’une superbe vue sur la Méditerranée. Une belle occasion de concrétiser votre projet immobilier, pour y vivre, investir ou séjourner à Tanger.",
+            "MARINA BLOC B · N°303": "À Tanger Marina Bay, cet appartement séduit par ses beaux volumes, sa luminosité et sa magnifique vue sur la Méditerranée. Un cadre idéal pour s’installer à Tanger ou profiter d’une résidence secondaire face à la mer.",
+            "MARINA BLOC B · N°306": "Découvrez cet appartement spacieux et lumineux situé à Tanger Marina Bay. Sa vue exceptionnelle sur la Méditerranée et son emplacement privilégié en font une belle opportunité pour une résidence principale, un investissement ou un pied-à-terre à Tanger.",
             "HILTON · N°03": HILTON_N03_SALE_DESCRIPTION,
             "HILTON · N°11": HILTON_N11_SALE_DESCRIPTION,
             "HILTON · N°13": HILTON_N13_SALE_DESCRIPTION,
