@@ -299,9 +299,9 @@ MANDELSON_N47_PHOTOS = [
 
 MARINA_N302_PHOTOS = [
     ("Vue", "/assets/marina-n302/marina-n302-vue-large.jpg", "Vue depuis l'appartement Marina N°302"),
+    ("Hall de la résidence", "/assets/marina-n302/marina-n302-hall-large.jpg", "Hall de la résidence Marina"),
     ("Porte N°302", "/assets/marina-n302/marina-n302-porte-large.jpg", "Porte N°302 de l'appartement Marina N°302"),
     ("Salon", "/assets/marina-n302/marina-n302-salon-large.jpg", "Salon de l'appartement Marina N°302"),
-    ("Hall de la résidence", "/assets/marina-n302/marina-n302-hall-large.jpg", "Hall de la résidence Marina"),
     ("Cuisine", "/assets/marina-n302/marina-n302-cuisine-large.jpg", "Cuisine de l'appartement Marina N°302"),
     ("Chambre", "/assets/marina-n302/marina-n302-chambre-large.jpg", "Chambre de l'appartement Marina N°302"),
     ("Placard", "/assets/marina-n302/marina-n302-placard-large.jpg", "Placard de l'appartement Marina N°302"),
@@ -312,9 +312,9 @@ MARINA_N302_PHOTOS = [
 
 MARINA_N303_PHOTOS = [
     ("Vue", "/assets/marina-n303/marina-n303-vue-large.jpg", "Vue depuis l'appartement Marina N°303"),
+    ("Hall de la résidence", "/assets/marina-n303/marina-n303-hall-large.jpg", "Hall de la résidence Marina"),
     ("Porte N°303", "/assets/marina-n303/marina-n303-porte-large.jpg", "Porte N°303 de l'appartement Marina N°303"),
     ("Salon", "/assets/marina-n303/marina-n303-salon-large.jpg", "Salon de l'appartement Marina N°303"),
-    ("Hall de la résidence", "/assets/marina-n303/marina-n303-hall-large.jpg", "Hall de la résidence Marina"),
     ("Cuisine", "/assets/marina-n303/marina-n303-cuisine-large.jpg", "Cuisine de l'appartement Marina N°303"),
     ("Chambre", "/assets/marina-n303/marina-n303-chambre-large.jpg", "Chambre de l'appartement Marina N°303"),
     ("Placard", "/assets/marina-n303/marina-n303-placard-large.jpg", "Placard de l'appartement Marina N°303"),
@@ -324,10 +324,10 @@ MARINA_N303_PHOTOS = [
 
 MARINA_N306_PHOTOS = [
     ("Vue", "/assets/marina-n306/marina-n306-vue-large.jpg", "Vue depuis l'appartement Marina N°306"),
+    ("Hall de la résidence", "/assets/marina-n306/marina-n306-hall-large.jpg", "Hall de la résidence Marina"),
     ("Porte N°306", "/assets/marina-n306/marina-n306-porte-large.jpg", "Porte N°306 de l'appartement Marina N°306"),
     ("Séjour", "/assets/marina-n306/marina-n306-sejour-large.jpg", "Séjour de l'appartement Marina N°306"),
     ("Salon", "/assets/marina-n306/marina-n306-salon-large.jpg", "Salon de l'appartement Marina N°306"),
-    ("Hall de la résidence", "/assets/marina-n306/marina-n306-hall-large.jpg", "Hall de la résidence Marina"),
     ("Terrasse", "/assets/marina-n306/marina-n306-terrasse-large.jpg", "Terrasse de l'appartement Marina N°306"),
     ("Cuisine", "/assets/marina-n306/marina-n306-cuisine-large.jpg", "Cuisine de l'appartement Marina N°306"),
     ("Balcon cuisine", "/assets/marina-n306/marina-n306-balcon-cuisine-large.jpg", "Balcon cuisine de l'appartement Marina N°306"),
