@@ -619,8 +619,8 @@ class Command(BaseCommand):
                 "Etage 09",
                 "N°05",
                 2,
-                "1,400 MAD",
-                1400,
+                "1 300 DH",
+                1300,
             ),
             (
                 "Appartement Hilton N°11",
@@ -695,7 +695,11 @@ class Command(BaseCommand):
                     "unit_number": unit_number,
                     "bedrooms": bedrooms,
                     "price": price,
-                    "price_note": "Prix indiqué pour juillet.",
+                    "price_note": (
+                        "Prix indiqué pour octobre 2026."
+                        if title in {"Appartement Hilton N°05"}
+                        else "Prix indiqué pour juillet."
+                    ),
                     "cta_label": "Demander la disponibilité →",
                     "sort_order": index,
                     "is_active": True,
