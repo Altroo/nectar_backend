@@ -45,6 +45,8 @@ class PublicSiteApiTests(TestCase):
             property_type=Property.COMMERCIAL,
             is_rented=True,
             title="Local A4 · ERASMUS TOWER",
+            surface_category="medium",
+            rental_category="A",
             floor="",
         )
 
@@ -57,6 +59,8 @@ class PublicSiteApiTests(TestCase):
         payload = response.json()
         self.assertEqual(payload[0]["title"], "Local A4 · ERASMUS TOWER")
         self.assertIs(payload[0]["is_rented"], True)
+        self.assertEqual(payload[0]["surface_category"], "medium")
+        self.assertEqual(payload[0]["rental_category"], "A")
 
     @override_settings(
         CONTACT_NOTIFICATION_EMAILS=["contact@nectar.ma"],

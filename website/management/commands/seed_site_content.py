@@ -713,22 +713,22 @@ class Command(BaseCommand):
         self.seed_property_photo_albums()
 
         commercial_units = [
-            ("Local A1 · ERASMUS TOWER", "A", 235, "141 m²", "94 m²", "188 m²"),
-            ("Local A2 · ERASMUS TOWER", "A", 239, "81 m²", "158 m²", "160 m²"),
-            ("Local A3 · ERASMUS TOWER", "A", 314, "148 m²", "166 m²", "231 m²"),
-            ("Local A4 · ERASMUS TOWER", "A", 292, "181 m²", "111 m²", "237 m²"),
-            ("Local A5 · ERASMUS TOWER", "A", 292, "183 m²", "109 m²", "238 m²"),
-            ("Local A6 · ERASMUS TOWER", "A", 213, "126 m²", "87 m²", "170 m²"),
-            ("Local B1 · ERASMUS TOWER", "B", 211, "108 m²", "103 m²", "160 m²"),
-            ("Local B2 · ERASMUS TOWER", "B", 270, "168 m²", "102 m²", "219 m²"),
-            ("Local B3 · ERASMUS TOWER", "B", 505, "314 m²", "191 m²", "410 m²"),
-            ("Local B4 · ERASMUS TOWER", "B", 388, "194 m²", "194 m²", "291 m²"),
-            ("Local B5 · ERASMUS TOWER", "B", 262, "136 m²", "126 m²", "199 m²"),
-            ("Local B6 · ERASMUS TOWER", "B", 277, "152 m²", "125 m²", "215 m²"),
-            ("Local B7 · ERASMUS TOWER", "B", 401, "168 m²", "233 m²", "285 m²"),
+            ("Local A1 · ERASMUS TOWER", "A", 235, "136 m²", "99 m²", "185,5 m²", "small", "A"),
+            ("Local A2 · ERASMUS TOWER", "A", 210, "122 m²", "88 m²", "166 m²", "small", "A"),
+            ("Local A3 · ERASMUS TOWER", "A", 287, "178 m²", "109 m²", "232,5 m²", "medium", "A"),
+            ("Local A4 · ERASMUS TOWER", "A", 282, "175 m²", "107 m²", "228,5 m²", "medium", "A"),
+            ("Local A5 · ERASMUS TOWER", "A", 305, "143 m²", "162 m²", "224 m²", "medium", "B"),
+            ("Local A6 · ERASMUS TOWER", "A", 227, "76 m²", "151 m²", "151,5 m²", "small", "B"),
+            ("Local B1 · ERASMUS TOWER", "B", 203, "105 m²", "98 m²", "154 m²", "small", "A"),
+            ("Local B2 · ERASMUS TOWER", "B", 267, "161 m²", "106 m²", "214 m²", "medium", "A"),
+            ("Local B3 · ERASMUS TOWER", "B", 498, "309 m²", "189 m²", "403,5 m²", "large", "A"),
+            ("Local B4 · ERASMUS TOWER", "B", 379, "190 m²", "189 m²", "284,5 m²", "large", "B"),
+            ("Local B5 · ERASMUS TOWER", "B", 244, "131 m²", "113 m²", "187,5 m²", "small", "B"),
+            ("Local B6 · ERASMUS TOWER", "B", 270, "147 m²", "123 m²", "208,5 m²", "medium", "B"),
+            ("Local B7 · ERASMUS TOWER", "B", 351, "163 m²", "188 m²", "257 m²", "large", "B"),
         ]
         for index, item in enumerate(commercial_units, start=201):
-            title, unit_type, surface, rdc, mezzanine, total_sold = item
+            title, unit_type, surface, rdc, mezzanine, total_sold, surface_category, rental_category = item
             unit_code = title.split(" · ")[0].replace("Local ", "")
             image_path = f"/assets/erasmus/units/{unit_code}.jpg"
             property_obj = self.upsert(
@@ -750,6 +750,8 @@ class Command(BaseCommand):
                     "surface_total": surface,
                     "surface_sold": total_sold,
                     "mezzanine": mezzanine,
+                    "surface_category": surface_category,
+                    "rental_category": rental_category,
                     "project_label": f"RDC {rdc}",
                     "price_note": unit_type,
                     "cta_label": "Demander la disponibilité →",

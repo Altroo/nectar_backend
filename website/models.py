@@ -106,6 +106,20 @@ class Property(VisibleOrderedModel, ImageSourceModel):
     surface_total = models.DecimalField("surface globale en m2", max_digits=8, decimal_places=2, blank=True, null=True)
     surface_sold = models.CharField("surface vendue", max_length=120, blank=True)
     mezzanine = models.CharField("mezzanine", max_length=120, blank=True)
+    surface_category = models.CharField(
+        "categorie de surface",
+        max_length=6,
+        blank=True,
+        default="",
+        choices=(("small", "Petite"), ("medium", "Moyenne"), ("large", "Grande")),
+    )
+    rental_category = models.CharField(
+        "categorie locative",
+        max_length=1,
+        blank=True,
+        default="",
+        choices=(("A", "A"), ("B", "B")),
+    )
     project_label = models.CharField("projet client", max_length=160, blank=True)
     price = models.CharField("prix affiche", max_length=120, blank=True)
     price_note = models.CharField("note sous le prix", max_length=160, blank=True)

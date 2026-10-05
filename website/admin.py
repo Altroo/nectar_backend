@@ -117,6 +117,8 @@ class PropertyAdmin(VisibleOrderedAdmin):
                     "surface_total",
                     "surface_sold",
                     "mezzanine",
+                    "surface_category",
+                    "rental_category",
                     "project_label",
                     "price",
                     "price_note",
