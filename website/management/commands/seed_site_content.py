@@ -646,8 +646,8 @@ class Command(BaseCommand):
                 "Etage 12",
                 "N°11",
                 1,
-                "1,100 MAD",
-                1100,
+                "900 DH",
+                900,
             ),
             (
                 "Appartement City Center Ra1 N°B",
@@ -697,7 +697,7 @@ class Command(BaseCommand):
                     "price": price,
                     "price_note": (
                         "Prix indiqué pour octobre 2026."
-                        if title in {"Appartement Hilton N°05"}
+                        if title in {"Appartement Hilton N°05", "Appartement Hilton N°11 - Etage 12"}
                         else "Prix indiqué pour juillet."
                     ),
                     "cta_label": "Demander la disponibilité →",

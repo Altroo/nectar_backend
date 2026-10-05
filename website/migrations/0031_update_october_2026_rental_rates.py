@@ -3,6 +3,7 @@ from django.db import migrations
 
 RENTAL_RATES = {
     ("Appartement Hilton N°05", "Etage 09"): ("1,400 MAD", 1400, "1 300 DH", 1300),
+    ("Appartement Hilton N°11 - Etage 12", "Etage 12"): ("1,100 MAD", 1100, "900 DH", 900),
 }
 CURRENT_NOTE = "Prix indiqué pour octobre 2026."
 PREVIOUS_NOTE = "Prix indiqué pour juillet."
