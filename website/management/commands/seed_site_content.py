@@ -739,7 +739,7 @@ class Command(BaseCommand):
                     "property_type": Property.COMMERCIAL,
                 },
                 {
-                    "is_rented": unit_code in {"A4", "A5", "B6"},
+                    "is_rented": unit_code in {"A3", "A4", "B2"},
                     "tag": "Malabata · Local commercial à louer",
                     "residence": "Erasmus Tower",
                     "district": "Malabata",
