@@ -533,7 +533,7 @@ class Command(BaseCommand):
                 "N°306",
                 3,
                 341,
-                "261 m² vendu",
+                "261 m²",
             ),
             (
                 "HILTON N° 1",
